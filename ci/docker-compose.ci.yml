@@ -1,0 +1,15 @@
+# App Dokploy "build-inspecta-core" (Source: Git, Compose Path: ci/docker-compose.ci.yml).
+# Env vars obrigatórias no Environment do Dokploy (nunca commitar):
+#   REPOSILITE_TOKEN_ID, REPOSILITE_TOKEN_SECRET (Access Token gerado no painel do
+#   Reposilite, ver DEPLOY_DOKPLOY.md §1.1 passo 3 — mesmo token usado hoje no
+#   ~/.m2/settings.xml local pra `mvn deploy` manual)
+name: inspecta-build-inspecta-core
+
+services:
+  build-inspecta-core:
+    build:
+      context: ..
+      dockerfile: ci/Dockerfile.ci
+    environment:
+      REPOSILITE_TOKEN_ID: ${REPOSILITE_TOKEN_ID}
+      REPOSILITE_TOKEN_SECRET: ${REPOSILITE_TOKEN_SECRET}

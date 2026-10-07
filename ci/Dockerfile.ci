@@ -1,0 +1,8 @@
+# Build-runner do inspecta-core: roda os testes existentes e, se passarem, publica o
+# jar no Reposilite (mvn deploy). Sem docker.sock — biblioteca, não gera imagem/app
+# rodando, então não precisa orquestrar containers nem falar com o registry.
+FROM maven:3.9-eclipse-temurin-21
+WORKDIR /ws
+COPY . .
+RUN chmod +x ci/entrypoint.sh
+ENTRYPOINT ["ci/entrypoint.sh"]
